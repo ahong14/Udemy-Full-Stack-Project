@@ -21,7 +21,7 @@ app.use(function(req, res, next) {
 });
 
 app.get('/', (request,response) => {
-
+	response.send({hi: there});
 });
 
 
