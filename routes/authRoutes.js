@@ -2,19 +2,13 @@ var passport = require('passport');
 
 
 module.exports = (app) => {
-    //route handler for google auth
-    app.get('/auth/google', 
-    //first parameter: find strategy associated with it
-    //second parameter: permissions to user account
-        passport.authenticate('google', {
-            scope: ['profile', 'email']
-        })
-    );
+    app.get('/api/logout', (req,res) =>{
+        req.logout();
+        res.send(req.user);
+    });
 
-    app.get('/auth/google/callback', 
-
-        passport.authenticate('google')
-
-    );
+    app.get('/api/current_user', (req,res) => {
+        res.send(req.user);
+    });
 
 };
